@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_concepts/constants/enums.dart';
 import 'package:flutter_bloc_concepts/logic/cubit/counter_cubit.dart';
 import 'package:flutter_bloc_concepts/logic/cubit/internet_cubit.dart';
-import 'package:flutter_bloc_concepts/presentation/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title, this.color}) : super(key: key);
@@ -76,14 +75,16 @@ class _HomeScreenState extends State<HomeScreen> {
             BlocConsumer<CounterCubit, CounterState>(
               listener: (counterCubitListenerContext, state) {
                 if (state.wasIncremented == true) {
-                  Scaffold.of(counterCubitListenerContext).showSnackBar(
+                  ScaffoldMessenger.of(counterCubitListenerContext)
+                      .showSnackBar(
                     SnackBar(
                       content: Text('Incremented!'),
                       duration: Duration(milliseconds: 300),
                     ),
                   );
                 } else if (state.wasIncremented == false) {
-                  Scaffold.of(counterCubitListenerContext).showSnackBar(
+                  ScaffoldMessenger.of(counterCubitListenerContext)
+                      .showSnackBar(
                     SnackBar(
                       content: Text('Decremented!'),
                       duration: Duration(milliseconds: 300),

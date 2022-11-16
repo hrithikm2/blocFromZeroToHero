@@ -75,14 +75,16 @@ class _HomeScreenState extends State<HomeScreen> {
             BlocConsumer<CounterCubit, CounterState>(
               listener: (counterCubitListenerContext, state) {
                 if (state.wasIncremented == true) {
-                  Scaffold.of(counterCubitListenerContext).showSnackBar(
+                  ScaffoldMessenger.of(counterCubitListenerContext)
+                      .showSnackBar(
                     SnackBar(
                       content: Text('Incremented!'),
                       duration: Duration(milliseconds: 300),
                     ),
                   );
                 } else if (state.wasIncremented == false) {
-                  Scaffold.of(counterCubitListenerContext).showSnackBar(
+                  ScaffoldMessenger.of(counterCubitListenerContext)
+                      .showSnackBar(
                     SnackBar(
                       content: Text('Decremented!'),
                       duration: Duration(milliseconds: 300),

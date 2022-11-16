@@ -6,7 +6,7 @@ import 'package:flutter_bloc_concepts/presentation/screens/third_screen.dart';
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings settings) {
-    final GlobalKey<ScaffoldState> key = settings.arguments;
+    final GlobalKey<ScaffoldMessengerState> key = settings.arguments;
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(

@@ -12,14 +12,15 @@ class SecondScreen extends StatefulWidget {
 
   final String title;
   final Color color;
-  final GlobalKey<ScaffoldState> homeScreenKey;
+  final GlobalKey<ScaffoldMessengerState> homeScreenKey;
 
   @override
   _SecondScreenState createState() => _SecondScreenState();
 }
 
 class _SecondScreenState extends State<SecondScreen> {
-  GlobalKey<ScaffoldState> secondScreenKey = GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldMessengerState> secondScreenKey =
+      GlobalKey<ScaffoldMessengerState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +49,7 @@ class _SecondScreenState extends State<SecondScreen> {
                 } else if (state.wasIncremented == false) {
                   widget.homeScreenKey.currentState.removeCurrentSnackBar();
                   secondScreenKey.currentState.removeCurrentSnackBar();
-                  Scaffold.of(context).showSnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('Decremented!'),
                       duration: Duration(milliseconds: 300),
